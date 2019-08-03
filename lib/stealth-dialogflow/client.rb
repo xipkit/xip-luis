@@ -1,10 +1,6 @@
 module Stealth
   class Dialogflow
 
-    ENDPOINT = "https://"
-
-    curl -H "Content-Type: application/json; charset=utf-8"  -H "Authorization: Bearer "  -d "{\"queryInput\":{\"text\":{\"text\":\"woot\",\"languageCode\":\"en\"}},\"queryParams\":{\"timeZone\":\"America/Detroit\",\"sentimentAnalysisRequestConfig\":{\"analyzeQueryTextSentiment\":true}}}" "https://dialogflow.googleapis.com/v2/projects/mav-cvmrqn/agent/sessions/f35895d9-d21d-1044-8091-314e3a1e555f:detectIntent"
-
     LANGUAGE_CODE = ENV['DIALOGFLOW_LANGUAGE_CODE'] || 'en-US'
 
     def self.detect_intent(text:, session_id:, params: {})
