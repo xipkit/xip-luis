@@ -1,3 +1,3 @@
-require 'http'
+# frozen_string_literal: true
 
-require 'stealth-dialogflow/client'
+require "google/cloud/dialogflow"

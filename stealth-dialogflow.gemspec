@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.add_dependency 'stealth', '~> 2.0'
-  s.add_dependency 'http', '~> 4.1'
+  s.add_dependency 'google-cloud-dialogflow', '~> 0.5'
 
   s.add_development_dependency "rspec", "= 3.8.0"
 
