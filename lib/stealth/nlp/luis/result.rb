@@ -5,12 +5,13 @@ module Stealth
     module Luis
       class Result < Stealth::Nlp::Result
 
-        @@entity_map = {
+        ENTITY_MAP = {
           'money' => :currency, 'number' => :number, 'email' => :email,
           'percentage' => :percentage, 'Calendar.Duration' => :duration,
           'geographyV2' => :geo, 'age' => :age, 'phonenumber' => :phone,
           'ordinalV2' => :ordinal, 'url' => :url, 'dimension' => :dimension,
-          'temperature' => :temp, 'keyPhrase' => :key_phrase, 'name' => :name
+          'temperature' => :temp, 'keyPhrase' => :key_phrase, 'name' => :name,
+          'datetimeV2' => :datetime
         }
 
         def initialize(result:)
@@ -81,40 +82,8 @@ module Stealth
           return {} if raw_entities.blank?
           _entities = {}
 
-          ENTITY_TYPES = %i(number currency email percentage phone age
-                        url ordinal geo dimension temp datetime duration)
-
           raw_entities.each do |type, values|
-            case type
-            when 'money'
-              _entities[:currency] = values
-            when 'number'
-              _entities[:number] = values
-            when 'email'
-              _entities[:email] = values
-            when 'percentage'
-              _entities[:percentage] = values
-            when 'Calendar.Duration'
-              _entities[:duration] = values
-            when 'geographyV2'
-              _entities[:geo] = values
-            when 'age'
-              _entities[:age] = values
-            when 'phonenumber'
-              _entities[:phone] = values
-            when 'ordinalV2'
-              _entities[:ordinal] = values
-            when 'url'
-              _entities[:url] = values
-            when 'dimension'
-              _entities[:dimension] = values
-            when 'temperature'
-              _entities[:temp] = values
-            when 'keyPhrase'
-              _entities[:key_phrase] = values
-            when 'personName'
-              _entities[:name] = values
-            end
+            _entities[ENTITY_MAP[type]] = values
           end
 
           _entities
