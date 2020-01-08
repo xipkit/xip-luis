@@ -32,6 +32,26 @@ Stealth will automatically use your `staging` LUIS slot in development and stagi
 
 That's it! Stealth will now automatically use LUIS for intent detection and entity extraction automatically via `handle_response` and `get_match`.
 
+## Intents
+
+We recommend you name your intents using snake case (`snake_case`). This is because this integration will automatically convert your intent names to Ruby symbols.
+
+So for example, if you have a `handle_response` defined like this:
+
+```ruby
+handle_response(
+  'Maybe' => proc { step_to state: :say_maybe },
+  :yes => proc { step_to state: :say_yes },
+  :no => proc { step_to state: :say_no }
+)
+```
+
+If your user responds with a variation of the string `maybe`, then they will be taken to the state `say_maybe`.
+
+Otherwise, the intent named `yes` and the intent named `no` will attempt to be matched. So if you had named your intent `YES` for example, you'd have to use `:YES` here which doesn't match Ruby syntax conventions.
+
+For more info about how intents are matched, please see the [Stealth NLP documentation](https://github.com/hellostealth/stealth/wiki/NLP).
+
 ## Entities
 
 The entity types listed below are named using their corresponding Stealth type. The equivalent type used by Microsoft LUIS is also listed. For each code sample, the sample query is first provided followed by the array of entities extracted from the queries (for the given type).
