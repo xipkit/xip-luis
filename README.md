@@ -2,6 +2,36 @@
 
 This integration implements the [Microsoft LUIS](https://luis.ai) Language Understanding service. It utilizes the built-in NLP features part of Stealth 2.x. If you are still using Stealth 1.x, you will first need to upgrade to Stealth 2.x before you can use this integration.
 
+## Configuration
+
+For instructions on how to configure your Azure account signup for LUIS, please reference their docs. Once your account is setup, these are the configuration settings you will need to add to you `services.yml` file:
+
+```yaml
+default: &default
+  luis:
+    endpoint: westus.api.cognitive.microsoft.com
+    app_id: 9434fbd8-420b-6d75-8a6f-b6c9a0ac5ec0
+    subscription_key: 1b69a4b9db669805b4fcba5f1f2f87bb
+    tz_offset: 0
+
+production:
+  <<: *default
+development:
+  <<: *default
+test:
+  <<: *default
+```
+
+Next, inside of an initializer in your bot (`config/initializers/settings.rb`), you need to tell Stealth that `LUIS` will be your default NLP integration:
+
+```ruby
+Stealth.config.nlp_integration = :luis
+```
+
+Stealth will automatically use your `staging` LUIS slot in development and staging environments and will use the `production` slot for your production Stealth environment.
+
+That's it! Stealth will now automatically use LUIS for intent detection and entity extraction automatically via `handle_response` and `get_match`.
+
 ## Entities
 
 The entity types listed below are named using their corresponding Stealth type. The equivalent type used by Microsoft LUIS is also listed. For each code sample, the sample query is first provided followed by the array of entities extracted from the queries (for the given type).
