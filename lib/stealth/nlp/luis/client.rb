@@ -34,7 +34,7 @@ module Stealth
           end
         end
 
-        def detect_intent(query:)
+        def understand(query:)
           params = {
             'datetimeReference'   => @tz_offset,
             'subscription-key'    => @subscription_key,
