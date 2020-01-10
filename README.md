@@ -242,6 +242,8 @@ For more info about these values, please reference the [temperature entity LUIS 
 
 LUIS prebuilt entity: `datetimeV2`
 
+This one is the most complicated one to work with. The values are nested pretty deeply. This integration exposes the values at such a high level because there is a chance that LUIS will return results for more than one date type. For example, below we have just one result of type `date`, but LUIS could return more than one object of subtype `daterange`, `time`, `timerange`, etc. See the docs for more info about these subtypes.
+
 ```ruby
 "How about Mar 12?"
 
