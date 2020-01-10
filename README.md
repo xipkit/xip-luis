@@ -4,7 +4,9 @@ This integration implements the [Microsoft LUIS](https://luis.ai) Language Under
 
 ## Configuration
 
-For instructions on how to configure your Azure account signup for LUIS, please reference their docs. Once your account is setup, these are the configuration settings you will need to add to you `services.yml` file:
+For instructions on how to configure your Azure account signup for LUIS, please reference their docs. You won't have to set this anywhere, but this gem does utilize the latest `v3` LUIS API version.
+
+Once your account is setup, these are the configuration settings you will need to add to you `services.yml` file:
 
 ```yaml
 default: &default
