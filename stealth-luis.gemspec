@@ -12,6 +12,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'stealth', '~> 2.0'
   s.add_dependency 'http', '~> 4'
 
-  s.add_development_dependency "rspec", "= 3.8.0"
+  s.add_development_dependency "rspec", "= 3.9.0"
 
 end
