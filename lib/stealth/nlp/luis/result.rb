@@ -83,7 +83,12 @@ module Stealth
           _entities = {}
 
           raw_entities.each do |type, values|
-            _entities[ENTITY_MAP[type]] = values
+            if ENTITY_MAP[type]
+              _entities[ENTITY_MAP[type]] = values
+            else
+              # A custom entity
+              _entities[type.to_sym] = values
+            end
           end
 
           _entities
