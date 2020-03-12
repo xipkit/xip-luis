@@ -5,12 +5,11 @@ module Stealth
     module Luis
       class Client < Stealth::Nlp::Client
 
-        ENDPOINT = ENV['LUIS_ENDPOINT'] || 'westus.api.cognitive.microsoft.com'
-
-        def initialize(subscription_key: nil, app_id: nil, tz_offset: 0)
+        def initialize(subscription_key: nil, app_id: nil, endpoint: nil, tz_offset: 0)
           begin
             @subscription_key = subscription_key || Stealth.config.luis.subscription_key
             @app_id = app_id || Stealth.config.luis.app_id
+            @endpoint = endpoint || Stealth.config.luis.endpoint
             @tz_offset = tz_offset || Stealth.config.luis.tz_offset
             @slot = Stealth.env.development? ? 'staging' : 'production'
           rescue NoMethodError
@@ -22,7 +21,7 @@ module Stealth
         end
 
         def endpoint
-          "https://#{ENDPOINT}/luis/prediction/v3.0/apps/#{@app_id}/slots/#{@slot}/predict"
+          "https://#{@endpoint}/luis/prediction/v3.0/apps/#{@app_id}/slots/#{@slot}/predict"
         end
 
         def client

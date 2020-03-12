@@ -10,6 +10,7 @@ Once your account is setup, these are the configuration settings you will need t
 
 ```yaml
 default: &default
+  nlp_integration: luis
   luis:
     endpoint: westus.api.cognitive.microsoft.com
     app_id: 9434fbd8-420b-6d75-8a6f-b6c9a0ac5ec0
@@ -22,12 +23,6 @@ development:
   <<: *default
 test:
   <<: *default
-```
-
-Next, inside of an initializer in your bot (`config/initializers/settings.rb`), you need to tell Stealth that `LUIS` will be your default NLP integration:
-
-```ruby
-Stealth.config.nlp_integration = :luis
 ```
 
 Stealth will automatically use your `staging` LUIS slot in development and staging environments and will use the `production` slot for your production Stealth environment.
