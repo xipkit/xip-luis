@@ -1,25 +1,13 @@
-GIT
-  remote: https://github.com/hellostealth/stealth
-  revision: d6d3c626d2faa951203da652f733c4a18162e1f5
-  branch: master
-  specs:
-    stealth (2.0.0)
-      activesupport (~> 6.0)
-      multi_json (~> 1.12)
-      puma (>= 4.2, < 5.0)
-      sidekiq (~> 6.0)
-      sinatra (~> 2.0)
-      thor (~> 1.0)
-
 PATH
   remote: .
   specs:
-    stealth-luis (0.9.0)
+    stealth-luis (1.0.2)
       http (~> 4)
-      stealth (~> 2.0)
+      stealth (~> 2.1)
 
 GEM
   remote: https://rubygems.org/
+  remote: https://EBQGt-IDpU8vpliiVe76xe1CJ8OOuu48w@gem.fury.io/whoisblackops/
   specs:
     activesupport (6.0.2.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -87,6 +75,13 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
+    stealth (2.1.0)
+      activesupport (~> 6.0)
+      multi_json (~> 1.12)
+      puma (>= 4.2, < 5.0)
+      sidekiq (~> 6.0)
+      sinatra (~> 2.0)
+      thor (~> 1.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -102,7 +97,7 @@ PLATFORMS
 
 DEPENDENCIES
   rspec (= 3.9.0)
-  stealth!
+  stealth (~> 2.1)!
   stealth-luis!
 
 BUNDLED WITH
