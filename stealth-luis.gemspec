@@ -5,7 +5,6 @@ Gem::Specification.new do |s|
   s.description = "Built-in NLP for Stealth bots via Microsoft's Language Understanding (LUIS)."
   s.authors     = ["Mauricio Gomes"]
   s.email       = 'mauricio@edge14.com'
-  s.files       = `git ls-files`.split("\n")
   s.homepage    = 'http://github.com/hellostealth/stealth-luis'
   s.license     = 'MIT'
 
@@ -14,4 +13,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rspec", "= 3.9.0"
 
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
+  s.require_paths = ['lib']
 end
