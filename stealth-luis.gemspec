@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'stealth-luis'
-  s.version     = '1.0.2'
+  s.version     = '1.0.3'
   s.summary     = "Stealth LUIS"
   s.description = "Built-in NLP for Stealth bots via Microsoft's Language Understanding (LUIS)."
   s.authors     = ["Mauricio Gomes"]
