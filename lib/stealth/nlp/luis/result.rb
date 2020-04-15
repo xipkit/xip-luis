@@ -71,7 +71,7 @@ module Stealth
         end
 
         def intent_score
-          parsed_result&.dig('prediction', 'intents', top_intent)
+          parsed_result&.dig('prediction', 'intents', top_intent, 'score')
         end
 
         def raw_entities
@@ -105,7 +105,24 @@ module Stealth
         private
 
         def top_intent
-          parsed_result&.dig('prediction', 'topIntent')
+          @top_intent ||= begin
+            matched_intent = parsed_result&.dig('prediction', 'topIntent')
+            _intent_score = parsed_result&.dig('prediction', 'intents', matched_intent, 'score')
+
+            if Stealth.config.luis.intent_threshold.is_a?(Numeric)
+              if _intent_score > Stealth.config.luis.intent_threshold
+                matched_intent
+              else
+                Stealth::Logger.l(
+                  topic: :nlp,
+                  message: "Ignoring intent match. Does not meet threshold (#{Stealth.config.luis.intent_threshold})"
+                )
+                'None' # can't be nil or this doesn't get memoized
+              end
+            else
+              matched_intent
+            end
+          end
         end
 
       end

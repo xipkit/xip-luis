@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'stealth-luis'
-  s.version     = '1.0.6'
+  s.version     = '1.1.0'
   s.summary     = "Stealth LUIS"
   s.description = "Built-in NLP for Stealth bots via Microsoft's Language Understanding (LUIS)."
   s.authors     = ["Mauricio Gomes"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/hellostealth/stealth-luis'
   s.license     = 'MIT'
 
-  s.add_dependency 'stealth', '~> 2.1'
+  s.add_dependency 'stealth', '~> 2'
   s.add_dependency 'http', '~> 4'
 
   s.add_development_dependency "rspec", "= 3.9.0"

@@ -16,6 +16,7 @@ default: &default
     app_id: 9434fbd8-420b-6d75-8a6f-b6c9a0ac5ec0
     subscription_key: 1b69a4b9db669805b4fcba5f1f2f87bb
     tz_offset: 0
+    intent_threshold: 0.2
 
 production:
   <<: *default
@@ -48,6 +49,10 @@ If your user responds with a variation of the string `maybe`, then they will be 
 Otherwise, the intent named `yes` and the intent named `no` will attempt to be matched. So if you had named your intent `YES` for example, you'd have to use `:YES` here which doesn't match Ruby syntax conventions.
 
 For more info about how intents are matched, please see the [Stealth NLP documentation](https://github.com/hellostealth/stealth/wiki/NLP).
+
+### intent_threshold
+
+This is the real number that respresents the minimum threshold required for an intent to match. So if for example your `intent_threshold` is set to `0.2`, if the top intent scores `0.09`, it will not be returned as a match.
 
 ## Entities
 

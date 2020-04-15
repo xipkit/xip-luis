@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    stealth-luis (1.0.6)
+    stealth-luis (1.1.0)
       http (~> 4)
-      stealth (~> 2.1)
+      stealth (~> 2)
 
 GEM
   remote: https://rubygems.org/
   remote: https://EBQGt-IDpU8vpliiVe76xe1CJ8OOuu48w@gem.fury.io/whoisblackops/
   specs:
-    activesupport (6.0.2.1)
+    activesupport (6.0.2.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -43,7 +43,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.2)
-    public_suffix (4.0.3)
+    public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -57,7 +57,7 @@ GEM
       rspec-mocks (~> 3.9.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
-    rspec-expectations (3.9.0)
+    rspec-expectations (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-mocks (3.9.1)
@@ -65,7 +65,7 @@ GEM
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
     ruby2_keywords (0.0.2)
-    sidekiq (6.0.5)
+    sidekiq (6.0.6)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       rack-protection (>= 2.0.0)
@@ -75,7 +75,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
-    stealth (2.1.0)
+    stealth (2.4.0)
       activesupport (~> 6.0)
       multi_json (~> 1.12)
       puma (>= 4.2, < 5.0)
@@ -85,7 +85,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
@@ -97,8 +97,8 @@ PLATFORMS
 
 DEPENDENCIES
   rspec (= 3.9.0)
-  stealth (~> 2.1)!
+  stealth (~> 2)!
   stealth-luis!
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
