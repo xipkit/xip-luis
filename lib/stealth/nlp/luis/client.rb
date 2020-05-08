@@ -5,12 +5,12 @@ module Stealth
     module Luis
       class Client < Stealth::Nlp::Client
 
-        def initialize(subscription_key: nil, app_id: nil, endpoint: nil, tz_offset: 0)
+        def initialize(subscription_key: nil, app_id: nil, endpoint: nil, datetime_ref: nil)
           begin
             @subscription_key = subscription_key || Stealth.config.luis.subscription_key
             @app_id = app_id || Stealth.config.luis.app_id
             @endpoint = endpoint || Stealth.config.luis.endpoint
-            @tz_offset = tz_offset || Stealth.config.luis.tz_offset
+            @datetime_ref = datetime_ref || Stealth.config.luis.datetime_reference
             @slot = Stealth.env.development? ? 'staging' : 'production'
           rescue NoMethodError
             raise(
@@ -35,16 +35,21 @@ module Stealth
 
         def understand(query:)
           params = {
-            'datetimeReference'   => @tz_offset,
-            'subscription-key'    => @subscription_key,
-            'query'               => query
+            'subscription-key'    => @subscription_key
           }
+
+          body = MultiJson.dump({
+            'query'               => query,
+            'options'             => {
+              'datetimeReference' => @datetime_ref,
+            }
+          })
 
           Stealth::Logger.l(
             topic: :nlp,
             message: 'Performing NLP lookup via Microsoft LUIS'
           )
-          result = client.get(endpoint, params: params)
+          result = client.post(endpoint, params: params, body: body)
           Result.new(result: result)
         end
 
