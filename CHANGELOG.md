@@ -1,3 +1,9 @@
+# Changelog 1.2.1
+
+## Features
+
+* Updated gems
+
 # Changelog 1.2.0
 
 ## Bugfixes
