@@ -1,6 +1,6 @@
-# Stealth LUIS
+# LUIS NLP Xip Kit Component
 
-This integration implements the [Microsoft LUIS](https://luis.ai) Language Understanding service. It utilizes the built-in NLP features part of Stealth 2.x. If you are still using Stealth 1.x, you will first need to upgrade to Stealth 2.x before you can use this integration.
+This integration implements the [Microsoft LUIS](https://luis.ai) Language Understanding service. It utilizes the built-in NLP features part of Xip 2.x. If you are still using Xip 1.x, you will first need to upgrade to Xip 2.x before you can use this integration.
 
 ## Configuration
 
@@ -26,9 +26,9 @@ test:
   <<: *default
 ```
 
-Stealth will automatically use your `staging` LUIS slot in development and staging environments and will use the `production` slot for your production Stealth environment.
+Xip will automatically use your `staging` LUIS slot in development and staging environments and will use the `production` slot for your production Xip environment.
 
-That's it! Stealth will now automatically use LUIS for intent detection and entity extraction automatically via `handle_response` and `get_match`.
+That's it! Xip will now automatically use LUIS for intent detection and entity extraction automatically via `handle_response` and `get_match`.
 
 ## Intents
 
@@ -48,7 +48,7 @@ If your user responds with a variation of the string `maybe`, then they will be 
 
 Otherwise, the intent named `yes` and the intent named `no` will attempt to be matched. So if you had named your intent `YES` for example, you'd have to use `:YES` here which doesn't match Ruby syntax conventions.
 
-For more info about how intents are matched, please see the [Stealth NLP documentation](https://github.com/hellostealth/stealth/wiki/NLP).
+For more info about how intents are matched, please see the [Xip Kit NLP documentation](https://docs.xipkit.com/nlp).
 
 ### intent_threshold
 
@@ -56,9 +56,9 @@ This is the real number that respresents the minimum threshold required for an i
 
 ## Entities
 
-The entity types listed below are named using their corresponding Stealth type. The equivalent type used by Microsoft LUIS is also listed. For each code sample, the sample query is first provided followed by the array of entities extracted from the queries (for the given type).
+The entity types listed below are named using their corresponding Xip type. The equivalent type used by Microsoft LUIS is also listed. For each code sample, the sample query is first provided followed by the array of entities extracted from the queries (for the given type).
 
-It's possible, and even likely, that a query matches more than one entity type. For example, a `currency` type will also match a `number` type. For more info about how to utilize these types, please see the [Stealth NLP documentation](https://github.com/hellostealth/stealth/wiki/NLP).
+It's possible, and even likely, that a query matches more than one entity type. For example, a `currency` type will also match a `number` type. For more info about how to utilize these types, please see the [Xip Kit NLP documentation](https://docs.xipkit.com/nlp).
 
 ### number
 

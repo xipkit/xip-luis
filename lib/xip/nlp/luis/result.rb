@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Stealth
+module Xip
   module Nlp
     module Luis
-      class Result < Stealth::Nlp::Result
+      class Result < Xip::Nlp::Result
 
         ENTITY_MAP = {
           'money' => :currency, 'number' => :number, 'email' => :email,
@@ -17,13 +17,13 @@ module Stealth
         def initialize(result:)
           @result = result
           if result.status.success?
-            Stealth::Logger.l(
+            Xip::Logger.l(
               topic: :nlp,
               message: 'NLP lookup successful'
             )
             parsed_result
           else
-            Stealth::Logger.l(
+            Xip::Logger.l(
               topic: :nlp,
               message: "NLP lookup FAILED: (#{result.status.code}) #{result.body.to_s}"
             )
@@ -109,13 +109,13 @@ module Stealth
             matched_intent = parsed_result&.dig('prediction', 'topIntent')
             _intent_score = parsed_result&.dig('prediction', 'intents', matched_intent, 'score')
 
-            if Stealth.config.luis.intent_threshold.is_a?(Numeric)
-              if _intent_score > Stealth.config.luis.intent_threshold
+            if Xip.config.luis.intent_threshold.is_a?(Numeric)
+              if _intent_score > Xip.config.luis.intent_threshold
                 matched_intent
               else
-                Stealth::Logger.l(
+                Xip::Logger.l(
                   topic: :nlp,
-                  message: "Ignoring intent match. Does not meet threshold (#{Stealth.config.luis.intent_threshold})"
+                  message: "Ignoring intent match. Does not meet threshold (#{Xip.config.luis.intent_threshold})"
                 )
                 'None' # can't be nil or this doesn't get memoized
               end

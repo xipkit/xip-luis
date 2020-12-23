@@ -2,7 +2,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rspec'
-require 'stealth-luis'
+require 'xip-luis'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

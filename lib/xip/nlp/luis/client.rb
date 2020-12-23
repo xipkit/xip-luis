@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-module Stealth
+module Xip
   module Nlp
     module Luis
-      class Client < Stealth::Nlp::Client
+      class Client < Xip::Nlp::Client
 
         def initialize(subscription_key: nil, app_id: nil, endpoint: nil, datetime_ref: nil)
           begin
-            @subscription_key = subscription_key || Stealth.config.luis.subscription_key
-            @app_id = app_id || Stealth.config.luis.app_id
-            @endpoint = endpoint || Stealth.config.luis.endpoint
-            @datetime_ref = datetime_ref || Stealth.config.luis.datetime_reference
-            @slot = Stealth.env.development? ? 'staging' : 'production'
+            @subscription_key = subscription_key || Xip.config.luis.subscription_key
+            @app_id = app_id || Xip.config.luis.app_id
+            @endpoint = endpoint || Xip.config.luis.endpoint
+            @datetime_ref = datetime_ref || Xip.config.luis.datetime_reference
+            @slot = Xip.env.development? ? 'staging' : 'production'
           rescue NoMethodError
             raise(
-              Stealth::Errors::ConfigurationError,
+              Xip::Errors::ConfigurationError,
               'A `luis` configuration key must be specified directly or in `services.yml`'
             )
           end
@@ -45,7 +45,7 @@ module Stealth
             }
           })
 
-          Stealth::Logger.l(
+          Xip::Logger.l(
             topic: :nlp,
             message: 'Performing NLP lookup via Microsoft LUIS'
           )
