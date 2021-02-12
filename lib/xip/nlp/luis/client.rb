@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'http'
+
 module Xip
   module Nlp
     module Luis
