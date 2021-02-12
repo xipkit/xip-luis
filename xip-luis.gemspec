@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'xip-luis'
-  s.version     = '1.2.1'
+  s.version     = '1.2.2'
   s.summary     = "LUIS NLP Xip Kit Component"
   s.description = "Built-in NLP for Xip Kit via Microsoft's Language Understanding (LUIS)."
   s.authors     = ["Mauricio Gomes"]
