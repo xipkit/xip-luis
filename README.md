@@ -28,16 +28,16 @@ test:
 
 Xip will automatically use your `staging` LUIS slot in development and staging environments and will use the `production` slot for your production Xip environment.
 
-That's it! Xip will now automatically use LUIS for intent detection and entity extraction automatically via `handle_response` and `get_match`.
+That's it! Xip will now automatically use LUIS for intent detection and entity extraction automatically via `handle_message` and `get_match`.
 
 ## Intents
 
 We recommend you name your intents using snake case (`snake_case`). This is because this integration will automatically convert your intent names to Ruby symbols.
 
-So for example, if you have a `handle_response` defined like this:
+So for example, if you have a `handle_message` defined like this:
 
 ```ruby
-handle_response(
+handle_message(
   'Maybe' => proc { step_to state: :say_maybe },
   :yes => proc { step_to state: :say_yes },
   :no => proc { step_to state: :say_no }
